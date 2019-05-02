@@ -122,8 +122,34 @@ function movieThis(movie){
 
 }
 
+// It should run spotify-this-song for "I Want it That Way," as follows the text in random.txt.
 // Take the text inside random.txt and use it call one of LIRI's commands
 function doThis(){
+    fs.readFile("random.txt", "utf8", function (err,data) {
+        data = data.split(",");
+        var userInput = data[0];
+        var userQuery = data[1]
+
+        userCommand(userInput, userQuery);
+
+        // switch (userInput) {
+        //     case "concert-this":
+        //         concertThis(userQuery)
+        //         break;
+        //     case "spotify-this-song":
+        //         spotifyThis(userQuery)
+        //         break;
+        //     case "movie-this":
+        //         movieThis(userQuery)
+        //         break;
+        //     default:
+        //         break;
+
+        // }
+
+    });
 
 }
+
+
 
