@@ -2,21 +2,21 @@
 require("dotenv").config();
 
 // Import keys.js and store as variable
-var keys = require("./keys.js");
+const keys = require("./keys.js");
 
 // SPOTIFY API and NODE
-var SPOTIFY = require("node-spotify-api");
-var spotify = new Spotify(keys.spotify);
+const SPOTIFY = require("node-spotify-api");
+const spotify = new Spotify(keys.spotify);
 
 // OMDB API
-var omdb = (keys.omdb);
+let omdb = (keys.omdb);
 
 // BANDSINTOWN API
-var bandsintown = (keys.bandsintown);
+let bandsintown = (keys.bandsintown);
 
 // User input and command
-var userInput = process.argv[2];
-var userQuery =  process.argv[3];
+let userInput = process.argv[2];
+let userQuery =  process.argv[3];
 
 function userCommand(userInput, userQuery) {
     switch (userInput) {
@@ -31,6 +31,9 @@ function userCommand(userInput, userQuery) {
             break;
         case "do-what-it-says":
             doThis();
+            break;
+        default:
+            console.log("Sorry idgi");
             break;
 
     }
@@ -51,6 +54,6 @@ function movieThis(){
 }
 
 function doThis(){
-    
+
 }
 
