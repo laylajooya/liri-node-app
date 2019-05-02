@@ -31,7 +31,7 @@ function userCommand(userInput, userQuery) {
             concertThis(userQuery);
             break;
         case "spotify-this-song":
-            spotifyThis();
+            spotifyThis(userQuery);
             break;
         case "movie-this":
             movieThis();
@@ -70,7 +70,20 @@ function concertThis(artist){
 
 // Show the following info about song: artist(s), song name, preview link of song, album
 // If no song is provided, default to "The Sign" by Ace of Base
-function spotifyThis(){
+function spotifyThis(song){
+    // If no song is provided, default to "The Sign" by Ace of Base
+    if (song === "") {
+        song = "The Sign";
+    }
+
+    spotify.search({ type: "track", query: song }, function (err,data){
+        if (err) {
+            return console.log(err);
+        }
+        console.log("Artist(s): ", data.tracks.items[0].album.artists[0].name);
+        console.log("Preview: ", data.tracks.items[0].preview_url);
+        console.log("Album: ", data.tracks.items[0].album.name);
+    });
 
 }
 
