@@ -34,7 +34,7 @@ function userCommand(userInput, userQuery) {
             spotifyThis(userQuery);
             break;
         case "movie-this":
-            movieThis();
+            movieThis(userQuery);
             break;
         case "do-what-it-says":
             doThis();
@@ -72,9 +72,9 @@ function concertThis(artist){
 // If no song is provided, default to "The Sign" by Ace of Base
 function spotifyThis(song){
     // If no song is provided, default to "The Sign" by Ace of Base
-    if (song === "") {
-        song = "The Sign";
-    }
+    if (!song) {
+        song = "The Sign Ace of Base"; // adding artist name here bc "the sign" returning harry styles response
+    };
 
     spotify.search({ type: "track", query: song }, function (err,data){
         if (err) {
@@ -88,8 +88,35 @@ function spotifyThis(song){
 }
 
 // Output the following info: title, year, IMDB rating, Rotten Tomatoes rating, country, language, plot, actors
-// If user doesn't type movie, output "Mr. Nobody" data
-function movieThis(){
+// If user doesn't type movie, output "Mr. Nobody"
+function movieThis(movie){
+
+// If user doesn't type movie, output "Mr. Nobody"
+    if (!movie) {
+        movie = "Mr. Nobody";
+    };
+
+    axios.get("http://www.omdbapi.com/?apikey=trilogy&t=" + movie)
+        .then(function (data) {
+            var results = `
+            Title: ${data.data.Title}
+            Year: ${data.data.Year}
+            IMDB rating: ${data.data.Rated}
+            Rotten Tomatoes rating: ${data.data.Ratings[1].Value}
+            Country: ${data.data.Country}
+            Language: ${data.data.Language}
+            Plot: ${data.data.Plot}
+            Actors: ${data.data.Actors}
+            `;
+
+            console.log(results);
+
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+
+       
 
 }
 
