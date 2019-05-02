@@ -12,7 +12,7 @@ const moment = require("moment");
 const keys = require("./keys.js");
 
 // SPOTIFY API and NODE
-const SPOTIFY = require("node-spotify-api");
+const SPOTIFY = require("/node_modules/node-spotify-api");
 const spotify = new Spotify(keys.spotify);
 
 // OMDB API
@@ -48,18 +48,26 @@ function userCommand(userInput, userQuery) {
 
 userCommand(userInput, userQuery);
 
+// Search Bandsintown artist events API for an artist and render: venue name, venue location, event date(MM/DD/YYYY)
+// https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp
+
 function concertThis(){
 
 }
 
+// Show the following info about song: artist(s), song name, preview link of song, album
+// If no song is provided, default to "The Sign" by Ace of Base
 function spotifyThis(){
 
 }
 
+// Output the following info: title, year, IMDB rating, Rotten Tomatoes rating, country, language, plot, actors
+// If user doesn't type movie, output "Mr. Nobody" data
 function movieThis(){
 
 }
 
+// Take the text inside random.txt and use it call one of LIRI's commands
 function doThis(){
 
 }
