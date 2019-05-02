@@ -14,5 +14,43 @@ var omdb = (keys.omdb);
 // BANDSINTOWN API
 var bandsintown = (keys.bandsintown);
 
-// https://github.com/kat3ng/liri-node-app/blob/master/liri.js
-// https://github.com/the-Coding-Boot-Camp-at-UT/UTAUS201902FSF5/blob/master/10-nodejs/02-Homework/Instructions/homework_instructions.md
+// User input and command
+var userInput = process.argv[2];
+var userQuery =  process.argv[3];
+
+function userCommand(userInput, userQuery) {
+    switch (userInput) {
+        case "concert-this":
+            concertThis();
+            break;
+        case "spotify-this-song":
+            spotifyThis();
+            break;
+        case "movie-this":
+            movieThis();
+            break;
+        case "do-what-it-says":
+            doThis();
+            break;
+
+    }
+}
+
+userCommand(userInput, userQuery);
+
+function concertThis(){
+
+}
+
+function spotifyThis(){
+
+}
+
+function movieThis(){
+
+}
+
+function doThis(){
+    
+}
+
