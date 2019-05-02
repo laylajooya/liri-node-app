@@ -1,8 +1,8 @@
 // To read and set any environment variables with dotenv
 require("dotenv").config();
 
-// Request and file systems standard to Node
-let request = require("request");
+// Use Axios for requests and file systems standard to Node
+let axios = require("axios");
 const fs = require("fs");
 
 // Require moment
