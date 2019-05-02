@@ -1,6 +1,13 @@
 // To read and set any environment variables with dotenv
 require("dotenv").config();
 
+// Request and file systems standard to Node
+let request = require("request");
+const fs = require("fs");
+
+// Require moment
+const moment = require("moment");
+
 // Import keys.js and store as variable
 const keys = require("./keys.js");
 
