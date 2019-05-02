@@ -12,7 +12,7 @@ const moment = require("moment");
 const keys = require("./keys.js");
 
 // SPOTIFY API and NODE
-const SPOTIFY = require("/node_modules/node-spotify-api");
+const Spotify = require("node-spotify-api");
 const spotify = new Spotify(keys.spotify);
 
 // OMDB API
@@ -28,7 +28,7 @@ let userQuery =  process.argv[3];
 function userCommand(userInput, userQuery) {
     switch (userInput) {
         case "concert-this":
-            concertThis();
+            concertThis(userQuery);
             break;
         case "spotify-this-song":
             spotifyThis();
@@ -51,7 +51,20 @@ userCommand(userInput, userQuery);
 // Search Bandsintown artist events API for an artist and render: venue name, venue location, event date(MM/DD/YYYY)
 // https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp
 
-function concertThis(){
+function concertThis(artist){
+    axios.get("https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp")
+        .then(function (response) {
+            // console.log(response)
+            console.log("Venue name:", response.data[0].venue.name); 
+            console.log("Venue location:", response.data[0].venue.city);
+            // Format event date
+            var eventDate = moment(response.data[0].datetime).format("MM/DD/YYYY");
+            console.log("Event date:", eventDate);
+
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
 
 }
 
