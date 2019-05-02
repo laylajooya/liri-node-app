@@ -94,6 +94,8 @@ function movieThis(movie){
 // If user doesn't type movie, output "Mr. Nobody"
     if (!movie) {
         movie = "Mr. Nobody";
+        console.log("If you haven't watched Mr. Nobody, then you should: http://www.imdb.com/title/tt0485947/")
+        console.log("It's on Netflix!")
     };
 
     axios.get("http://www.omdbapi.com/?apikey=trilogy&t=" + movie)
